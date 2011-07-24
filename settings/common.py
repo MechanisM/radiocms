@@ -6,6 +6,7 @@ SITE_ROOT = PROJECT_ROOT.dirname()
 
 sys.path.append(SITE_ROOT)
 sys.path.append(PROJECT_ROOT / 'apps')
+sys.path.append(PROJECT_ROOT / 'libs')
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -82,9 +83,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    PROJECT_ROOT / 'templates',
 )
 
 INSTALLED_APPS = (

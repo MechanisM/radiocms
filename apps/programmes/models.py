@@ -59,7 +59,8 @@ class Instance(models.Model):
 
 class Segment(models.Model):
 
-    start_time = models.TimeField()
+    start_time_minutes = models.IntegerField()
+    start_time_seconds = models.IntegerField()
     duration = models.IntegerField(null=True, blank=True)
 
     class Meta:

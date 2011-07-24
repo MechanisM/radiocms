@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # url(r'^$', 'project.views.home', name='home'),
-    # url(r'^music/', include('music.urls')),
+    url(r'^programmes/', include('programmes.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
