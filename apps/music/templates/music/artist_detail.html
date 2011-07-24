@@ -1,0 +1,17 @@
+<h1>{{ object }}</h1>
+
+<ul>
+    {% for song in object.song_set.all %}
+    <li>{{ song.title }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Recently Played On</h2>
+
+<ul>
+{% for song in object.song_set.all %}
+    {% for seg in song.songsegment_set.all %}
+        <li>{{ seg.episode.show }} - {{ seg.duration }}</li>
+    {% endfor %}
+{% endfor %}
+</ul>

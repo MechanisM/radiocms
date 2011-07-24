@@ -3,3 +3,4 @@
 - /programmes/ just show today's show
 - Slug everything
 - ID generator
+- Override save() method to create own IDs: http://stackoverflow.com/questions/4963357/django-generate-an-unique-identifier-for-a-model

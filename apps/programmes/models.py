@@ -3,6 +3,39 @@ from django.contrib.auth.models import User, UserManager
 from apps.music.models import Song
 
 
+class Schedule(models.Model):
+
+    name = models.CharField(max_length=100)
+    # @todo valid_from
+    # @todo valid_to
+
+    class Meta:
+        pass
+
+    def __unicode__(self):
+        return self.name
+
+class ScheduleItem(models.Model):
+
+    schedule = models.ForeignKey('Schedule')
+    show = models.ForeignKey('Show')
+    time = models.TimeField()
+
+    is_monday = models.BooleanField()
+    is_tuesday = models.BooleanField()
+    is_wednesday = models.BooleanField()
+    is_thursday = models.BooleanField()
+    is_friday = models.BooleanField()
+    is_saturday = models.BooleanField()
+    is_sunday = models.BooleanField()
+
+    class Meta:
+        pass
+
+    def __unicode__(self):
+        return '%s' % (self.show, )
+
+
 class Presenter(User):
 
     preferred_name = models.CharField(max_length=100, blank=True, null=True)
