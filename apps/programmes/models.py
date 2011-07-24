@@ -67,6 +67,7 @@ class Show(models.Model):
 class Episode(models.Model):
 
     # @todo Duration
+    # @todo Some way to get date of episode?
     show = models.ForeignKey('Show', related_name='episodes')
     series = models.IntegerField(null=True, blank=True)
     episode = models.IntegerField(null=True, blank=True)

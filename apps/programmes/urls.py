@@ -1,8 +1,7 @@
 from django.conf.urls.defaults import *
-from django.views.generic import DetailView, ListView
-from models import Episode
+from views import EpisodeListView, EpisodeDetailView
 
 urlpatterns = patterns('',
-    url(r'^$', ListView.as_view(model=Episode), name='home'),
-    url(r'^(?P<pk>\d+)/$', DetailView.as_view(model=Episode), name="episode_detail"),
+    url(r'^$', EpisodeListView.as_view(), name='home'),
+    url(r'^(?P<pk>\d+)/$', EpisodeDetailView.as_view(), name="episode_detail"),
 )

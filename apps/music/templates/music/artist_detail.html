@@ -1,5 +1,6 @@
 <h1>{{ object }}</h1>
 
+<h2>Songs</h2>
 <ul>
     {% for song in object.song_set.all %}
     <li>{{ song.title }}</li>
@@ -7,11 +8,8 @@
 </ul>
 
 <h2>Recently Played On</h2>
-
 <ul>
-{% for song in object.song_set.all %}
-    {% for seg in song.songsegment_set.all %}
-        <li>{{ seg.episode.show }} - {{ seg.duration }}</li>
-    {% endfor %}
+{% for segment in recent_segments %}
+    <li><a href="{{ segment.episode.get_absolute_url }}">{{ segment.episode }}</a></li>
 {% endfor %}
 </ul>

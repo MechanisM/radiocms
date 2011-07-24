@@ -1,13 +1,13 @@
-<h1>{{ object }}</h1>
+<h1>{{ episode }}</h1>
 
 <h2>Music Played</h2>
 
 <ul>
-{% for object in object.songsegment_set.all %}
+{% for segment in episode.songsegment_set.all %}
     <li>
-        <span class="artist"><a href="{{ object.song.artist.get_absolute_url }}">{{ object.song.artist }}</a></span>
+        <span class="artist"><a href="{{ segment.song.artist.get_absolute_url }}">{{ segment.song.artist }}</a></span>
         <span class="separator">&mdash;</span>
-        <span class="title">{{ object.song.title }}</span>
+        <span class="title">{{ segment.song.title }}</span>
     </li>
 {% empty %}
     <li>No data yet.</li>
@@ -17,8 +17,8 @@
 <h2>Broadcast</h2>
 
 <ul>
-{% for object in object.instances.all %}
-    <li>{{ object.tx_time }}</li>
+{% for instance in episode.instances.all %}
+    <li>{{ instance.tx_time }}</li>
 {% empty %}
     <li>No instances found.</li>
 {% endfor %}
@@ -27,6 +27,6 @@
 <h2>More Details</h2>
 
 <ul>
-    <li>A programme from: <a href="{{ object.show.get_absolute_url }}">{{ object.show }}</a></li>
-    <li>Duration: {{ object.duration }}</li>
+    <li>A programme from: <a href="{{ episode.show.get_absolute_url }}">{{ episode.show }}</a></li>
+    <li>Duration: {{ episode.duration }}</li>
 </ul>
