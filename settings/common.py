@@ -1,3 +1,12 @@
+from path import path
+import sys
+
+PROJECT_ROOT = path(__file__).abspath().dirname().dirname()
+SITE_ROOT = PROJECT_ROOT.dirname()
+
+sys.path.append(SITE_ROOT)
+sys.path.append(PROJECT_ROOT / 'apps')
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
@@ -85,6 +94,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
+    'content',
+    'music',
+    'schedule',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

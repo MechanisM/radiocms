@@ -1,1 +1,4 @@
 Django==1.3
+South==0.7.3
+
+git+git://github.com/dottedmag/path.py.git
