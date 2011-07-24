@@ -13,7 +13,10 @@ class Presenter(User):
         pass
 
     def __unicode__(self):
-        return self.preferred_name
+        if self.preferred_name:
+            return self.preferred_name
+        else:
+            return '%s %s' % (self.first_name, self.last_name)
 
 
 class Show(models.Model):
@@ -31,32 +34,36 @@ class Show(models.Model):
 class Episode(models.Model):
 
     show = models.ForeignKey('Show', related_name='episodes')
+    series = models.IntegerField(null=True, blank=True)
+    episode = models.IntegerField(null=True, blank=True)
+    title = models.CharField(max_length=100)
 
     class Meta:
         pass
 
     def __unicode__(self):
-        return self.show
+        return '%s - %s' % (self.show, self.title, )
 
 
 class Instance(models.Model):
 
     episode = models.ForeignKey('Episode', related_name='instances')
+    tx_time = models.DateTimeField()
 
     class Meta:
         pass
 
     def __unicode__(self):
-        return self.episode
+        return '%s' % (self.episode, )
 
 
 class Segment(models.Model):
 
     start_time = models.TimeField()
-    duration = models.IntegerField()
+    duration = models.IntegerField(null=True, blank=True)
 
     class Meta:
-        pass
+        abstract = True
 
     def __unicode__(self):
         return '@todo'
@@ -67,7 +74,7 @@ class SongSegment(Segment):
     song = models.ForeignKey(Song)
 
     def __unicode__(self):
-        return self.song
+        return '%s' % (self.song, )
 
 
 class EventSegment(Segment):

@@ -5,10 +5,21 @@ class Artist(models.Model):
 
     name = models.CharField(max_length=100)
 
+    class Meta:
+        pass
+
+    def __unicode__(self):
+        return self.name
+
 
 class Song(models.Model):
 
     artist = models.ForeignKey('Artist')
     title = models.CharField(max_length=100)
 
+    class Meta:
+        pass
+
+    def __unicode__(self):
+        return '%s - %s' % (self.artist, self.title)
 
