@@ -1,0 +1,7 @@
+<h1>Today</h1>
+
+<ul>
+    {% for instance in todays_instances_list %}
+    <li>{{ instance.tx_time|date:"H:i" }}: <a href="{{ instance.episode.get_absolute_url }}">{{ instance }}</a></li>
+    {% endfor %}
+</ul>

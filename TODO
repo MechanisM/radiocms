@@ -1,5 +1,5 @@
 - Check this about authentication backends: http://scottbarnham.com/blog/2008/08/21/extending-the-django-user-model-with-inheritance/
-- On air now
+- On air now (context_processors.py)
 - /programmes/ just show today's show
 - Slug everything
 - ID generator
