@@ -38,6 +38,7 @@ class Episode(models.Model):
     series = models.IntegerField(null=True, blank=True)
     episode = models.IntegerField(null=True, blank=True)
     title = models.CharField(max_length=100)
+    description = models.TextField(max_length=1000, null=True, blank=True)
 
     class Meta:
         pass
