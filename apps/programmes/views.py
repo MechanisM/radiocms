@@ -1,11 +1,15 @@
 from django.views.generic.list_detail import object_list, object_detail
-from models import Show
+from models import Episode
 
 def home(request):
     return object_list(
         request,
-        queryset=Show.objects.all(),
+        queryset=Episode.objects.all(),
     )
 
-def programme_detail(request):
-    pass
+def episode_detail(request, object_id):
+    return object_detail(
+        request,
+        queryset=Episode.objects.all(),
+        object_id=object_id,
+    )

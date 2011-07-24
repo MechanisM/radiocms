@@ -33,6 +33,7 @@ class Show(models.Model):
 
 class Episode(models.Model):
 
+    # @todo Duration
     show = models.ForeignKey('Show', related_name='episodes')
     series = models.IntegerField(null=True, blank=True)
     episode = models.IntegerField(null=True, blank=True)
@@ -44,9 +45,14 @@ class Episode(models.Model):
     def __unicode__(self):
         return '%s - %s' % (self.show, self.title, )
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('episode_detail', [str(self.id)])
+
 
 class Instance(models.Model):
 
+    # @todo Rename to tx_date
     episode = models.ForeignKey('Episode', related_name='instances')
     tx_time = models.DateTimeField()
 
@@ -62,9 +68,11 @@ class Segment(models.Model):
     start_time_minutes = models.IntegerField()
     start_time_seconds = models.IntegerField()
     duration = models.IntegerField(null=True, blank=True)
+    episode = models.ForeignKey('Episode')
 
     class Meta:
         abstract = True
+        ordering = ('start_time_minutes', 'start_time_seconds', )
 
     def __unicode__(self):
         return '@todo'
